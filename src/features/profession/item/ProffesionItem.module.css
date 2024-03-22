@@ -1,10 +1,15 @@
 .professionItem {
+    position: relative;
+    width: 30px;
+    height: 30px;
+    font-size: 10px;
+    font-weight: bold;
+}
+
+.circleItem {
     position: absolute;
-    width: 100px;
-    height: 100px;
+    width: 20px;
+    height: 20px;
     border-radius: 50%;
-    background-color: #ccc;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    background-color: rgba(173, 173, 173, 1);
 }

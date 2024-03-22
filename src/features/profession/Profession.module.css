@@ -1,5 +1,25 @@
 .professionContainer {
-    position: relative;
-    width: 500px;
-    height: 500px;
+    width: 533px;
+    height: 533px;
+}
+
+.circle {
+    position: absolute;
+    width: 256px;
+    height: 256px;
+    border: 2.33px solid rgba(173, 173, 173, 1);
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.professionCircle {
+    position: absolute;
+    top: 12%;
+    left: 32%;
+    width: 533px;
+    height: 533px;
+    border-radius: 50%;
+    border: 2.33px solid rgba(173, 173, 173, 1);
 }
