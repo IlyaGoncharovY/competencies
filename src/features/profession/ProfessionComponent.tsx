@@ -1,12 +1,13 @@
 import {data} from '../../common';
 
-import {ProfessionItem} from './item/ProfessionItem.tsx';
-
 import s from './Profession.module.css';
+import {ProfessionItem} from './item/ProfessionItem.tsx';
 
 export const ProfessionComponent = () => {
   return (
     <div className={s.professionContainer}>
+      <div className={s.professionCircle}/>
+      <div className={s.circle}/>
       {data.map((profession, index) =>
         <ProfessionItem
           key={index}
