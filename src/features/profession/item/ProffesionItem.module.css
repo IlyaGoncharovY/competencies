@@ -1,5 +1,5 @@
 .professionItem {
-    position: relative;
+    position: absolute;
     width: 30px;
     height: 30px;
     font-size: 10px;
