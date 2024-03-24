@@ -1,35 +1,26 @@
 import {FC} from 'react';
 
-import {DataType} from '../../../common';
+import {calculatePosition, DataType} from '../../../common';
 
 import s from './ProffesionItem.module.css';
 
-interface IProfessionItem2 {
-  profession: DataType
-  index: number
-  total: number
+interface IProfessionItem {
+    profession: DataType
+    index: number
+    total: number
 }
 
-export const ProfessionItem:FC<IProfessionItem2> = ({
+export const ProfessionItem: FC<IProfessionItem> = ({
   profession,
   index,
   total,
 }) => {
 
-  const angle = (index / total) * Math.PI * 2;
-  const radius = 170;
-  const radiusItem = -40;
-
-  const left = 720 + Math.cos(angle) * radius;
-  const top = 345 + Math.sin(angle) * radius;
-
-  const leftItem = 13 + Math.cos(angle) * radiusItem;
-  const topItem = 1 + Math.sin(angle) * radiusItem;
+  const { left, top, leftItem, topItem } = calculatePosition({ index, total, radius: 170, radiusItem: -40 });
 
   return (
     <div className={s.professionItem}
       style={{
-        position: 'absolute',
         left: `${left}px`,
         top: `${top}px`,
       }}>
