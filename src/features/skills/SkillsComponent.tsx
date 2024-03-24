@@ -16,7 +16,12 @@ export const SkillsComponent: FC<ISkillsComponent> = ({
   total,
 }) => {
 
-  const { left, top, leftItem, topItem } = calculatePosition({ index, total, radius: 300, radiusItem: -30 });
+  const {
+    left,
+    top,
+    leftItem,
+    topItem,
+  } = calculatePosition({ index, total, radius: 300, radiusItem: -30 });
 
   return (
     <div className={s.skillContainer}
