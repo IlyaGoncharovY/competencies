@@ -20,7 +20,7 @@ export const calculatePosition = ({ index, total, radius, radiusItem }: IPositio
   const angle = (index / total) * Math.PI * 2;
 
   const left = 710 + Math.cos(angle) * radius;
-  const top = 340 + Math.sin(angle) * radius;
+  const top = 344 + Math.sin(angle) * radius;
 
   const leftItem = 22 + Math.cos(angle) * radiusItem;
   const topItem = 1 + Math.sin(angle) * radiusItem;

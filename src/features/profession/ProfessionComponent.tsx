@@ -12,7 +12,7 @@ export const ProfessionComponent = () => {
   const [selectedProfession, setSelectedProfession] = useState<number>(-1);
 
   const handleProfessionClick = (index: number) => {
-    setSelectedProfession(index === selectedProfession ? 1 : index);
+    setSelectedProfession(index === selectedProfession ? -1 : index);
   };
 
   const uniqueMainSkillsArray = uniqueSkillArray(data, 'mainSkills');
