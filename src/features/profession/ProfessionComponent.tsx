@@ -9,16 +9,21 @@ import {ProfessionItem} from './item/ProfessionItem.tsx';
 
 export const ProfessionComponent = () => {
 
-  const [selectedProfession, setSelectedProfession] = useState<number>(-1);
+  const [selectedProfession, setSelectedProfession] = useState<number | null>(null);
+
+  const [selectedSkills, setSelectedSkills] = useState<string[]>([]);
 
   const handleProfessionClick = (index: number) => {
-    setSelectedProfession(index === selectedProfession ? -1 : index);
+    if (index === selectedProfession) {
+      setSelectedProfession(-1);
+      setSelectedSkills([]);
+    } else {
+      setSelectedProfession(index);
+      setSelectedSkills(data[index].mainSkills.concat(data[index].otherSkills));
+    }
   };
 
-  const uniqueMainSkillsArray = uniqueSkillArray(data, 'mainSkills');
-  const uniqueOtherSkillsArray = uniqueSkillArray(data, 'otherSkills');
-
-  const ArrCommonSkills = uniqueMainSkillsArray.concat(uniqueOtherSkillsArray);
+  const allSkills = uniqueSkillArray(data);
 
   return (
     <div className={s.professionContainer}>
@@ -34,13 +39,13 @@ export const ProfessionComponent = () => {
           handleProfessionClick={handleProfessionClick}
         />,
       )}
-      {ArrCommonSkills.map((skill, index) =>
+      {allSkills.map((skill, index) =>
         <SkillsComponent
           key={index}
           skill={skill}
           index={index}
-          total={uniqueMainSkillsArray.length-1.6}
-          selectedProfession={index === selectedProfession}
+          total={allSkills.length}
+          selectedSkills={selectedSkills}
         />)}
     </div>
   );

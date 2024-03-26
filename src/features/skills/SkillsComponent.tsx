@@ -8,14 +8,14 @@ interface ISkillsComponent {
     skill: string
     index: number
     total: number
-    selectedProfession: boolean
+    selectedSkills: string[]
 }
 
 export const SkillsComponent: FC<ISkillsComponent> = ({
   skill,
   index,
   total,
-  selectedProfession,
+  selectedSkills,
 }) => {
 
   const {
@@ -25,7 +25,7 @@ export const SkillsComponent: FC<ISkillsComponent> = ({
     topItem,
   } = calculatePosition({ index, total, radius: 300, radiusItem: -30 });
 
-  const opacity = selectedProfession ? '1' : '0.5';
+  const opacity = selectedSkills.includes(skill) ? '1' : '0.5';
 
   return (
     <div className={s.skillContainer}
