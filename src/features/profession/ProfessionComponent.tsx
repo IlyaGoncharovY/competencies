@@ -18,6 +18,8 @@ export const ProfessionComponent = () => {
   const uniqueMainSkillsArray = uniqueSkillArray(data, 'mainSkills');
   const uniqueOtherSkillsArray = uniqueSkillArray(data, 'otherSkills');
 
+  const ArrCommonSkills = uniqueMainSkillsArray.concat(uniqueOtherSkillsArray);
+
   return (
     <div className={s.professionContainer}>
       <div className={s.professionCircle}/>
@@ -32,19 +34,13 @@ export const ProfessionComponent = () => {
           handleProfessionClick={handleProfessionClick}
         />,
       )}
-      {uniqueMainSkillsArray.map((skill, index) =>
+      {ArrCommonSkills.map((skill, index) =>
         <SkillsComponent
           key={index}
           skill={skill}
           index={index}
-          total={uniqueMainSkillsArray.length-1.5}
-        />)}
-      {uniqueOtherSkillsArray.map((skill, index) =>
-        <SkillsComponent
-          key={index}
-          skill={skill}
-          index={index}
-          total={uniqueOtherSkillsArray.length+1.5}
+          total={uniqueMainSkillsArray.length-1.6}
+          selectedProfession={index === selectedProfession}
         />)}
     </div>
   );
