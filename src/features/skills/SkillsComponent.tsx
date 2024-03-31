@@ -1,4 +1,4 @@
-import {FC} from 'react';
+import {FC, memo} from 'react';
 
 import {calculatePosition} from '../../common';
 
@@ -9,13 +9,15 @@ interface ISkillsComponent {
     index: number
     total: number
     selectedSkills: string[]
+    handleSkillClick: (skill: string) => void
 }
 
-export const SkillsComponent: FC<ISkillsComponent> = ({
+export const SkillsComponent: FC<ISkillsComponent> = memo(({
   skill,
   index,
   total,
   selectedSkills,
+  handleSkillClick,
 }) => {
 
   const {
@@ -25,7 +27,11 @@ export const SkillsComponent: FC<ISkillsComponent> = ({
     topItem,
   } = calculatePosition({ index, total, radius: 300, radiusItem: -30 });
 
-  const opacity = selectedSkills.includes(skill) ? '1' : '0.5';
+  const opacity = selectedSkills.includes(skill) ? '1' : '0.8';
+
+  const handleClick = () => {
+    handleSkillClick(skill);
+  };
 
   return (
     <div className={s.skillContainer}
@@ -33,7 +39,9 @@ export const SkillsComponent: FC<ISkillsComponent> = ({
         left: `${left}px`,
         top: `${top}px`,
         opacity: opacity,
-      }}>
+      }}
+      onClick={handleClick}
+    >
       {skill}
       <div className={s.skillCircle}
         style={{
@@ -43,4 +51,4 @@ export const SkillsComponent: FC<ISkillsComponent> = ({
         }}/>
     </div>
   );
-};
+});

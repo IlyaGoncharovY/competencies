@@ -10,7 +10,6 @@ export const uniqueSkillArray = (dataArray: DataType[]): string[] => {
     return accumulator.concat(currentValue.mainSkills, currentValue.otherSkills);
   }, []);
 
-  // Filter out duplicates
   const uniqueSkillsSet: Set<string> = new Set(allSkills);
   return [...uniqueSkillsSet];
 };

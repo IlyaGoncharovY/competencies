@@ -7,7 +7,7 @@
     position: absolute;
     width: 256px;
     height: 256px;
-    border: 2.33px solid rgba(173, 173, 173, 1);
+    border: 3px solid rgba(173, 173, 173, 1);
     border-radius: 50%;
     top: 50%;
     left: 50%;
@@ -21,5 +21,5 @@
     width: 533px;
     height: 533px;
     border-radius: 50%;
-    border: 2.33px solid rgba(173, 173, 173, 1);
+    border: 3px solid rgba(173, 173, 173, 1);
 }

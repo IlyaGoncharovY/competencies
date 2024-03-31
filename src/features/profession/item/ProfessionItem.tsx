@@ -1,4 +1,4 @@
-import {FC} from 'react';
+import {FC, memo} from 'react';
 
 import {calculatePosition, DataType} from '../../../common';
 
@@ -10,14 +10,16 @@ interface IProfessionItem {
     total: number
     selectedProfession: boolean
     handleProfessionClick: (index: number) => void
+    selectedSkills: string[]
 }
 
-export const ProfessionItem: FC<IProfessionItem> = ({
+export const ProfessionItem: FC<IProfessionItem> = memo(({
   profession,
   index,
   total,
   selectedProfession,
   handleProfessionClick,
+  selectedSkills,
 }) => {
 
   const {
@@ -27,16 +29,30 @@ export const ProfessionItem: FC<IProfessionItem> = ({
     topItem,
   } = calculatePosition({ index, total, radius: 170, radiusItem: -40 });
 
+  const isSelectedBySkills = selectedSkills.some(skill =>
+    profession.mainSkills.includes(skill) || profession.otherSkills.includes(skill),
+  );
+
+  const isSelected = selectedSkills.length === 1
+    ? isSelectedBySkills
+    : selectedProfession;
+
+  const handleClick = () => {
+    handleProfessionClick(index);
+  };
+
   return (
-    <div className={s.professionItem}
+    <div
+      className={s.professionItem}
       style={{
         left: `${left}px`,
         top: `${top}px`,
       }}
-      onClick={() => handleProfessionClick(index)}
+      onClick={handleClick}
     >
       {profession.name}
-      <div className={`${s.circleItem} ${selectedProfession ? s.selected : ''}`}
+      <div
+        className={`${s.circleItem} ${isSelected ? s.selected: ''}`}
         style={{
           left: `${leftItem}px`,
           top: `${topItem}px`,
@@ -44,4 +60,4 @@ export const ProfessionItem: FC<IProfessionItem> = ({
       />
     </div>
   );
-};
+});

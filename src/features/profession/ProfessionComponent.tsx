@@ -1,27 +1,19 @@
-import {useState} from 'react';
-
 import {data, uniqueSkillArray} from '../../common';
 
 import {SkillsComponent} from '../skills';
 
 import s from './Profession.module.css';
 import {ProfessionItem} from './item/ProfessionItem.tsx';
+import {useProfessionAndSkillData} from './hook';
 
 export const ProfessionComponent = () => {
 
-  const [selectedProfession, setSelectedProfession] = useState<number | null>(null);
-
-  const [selectedSkills, setSelectedSkills] = useState<string[]>([]);
-
-  const handleProfessionClick = (index: number) => {
-    if (index === selectedProfession) {
-      setSelectedProfession(-1);
-      setSelectedSkills([]);
-    } else {
-      setSelectedProfession(index);
-      setSelectedSkills(data[index].mainSkills.concat(data[index].otherSkills));
-    }
-  };
+  const {
+    selectedProfession,
+    handleProfessionClick,
+    selectedSkills,
+    handleSkillClick,
+  } = useProfessionAndSkillData();
 
   const allSkills = uniqueSkillArray(data);
 
@@ -37,6 +29,7 @@ export const ProfessionComponent = () => {
           total={data.length}
           selectedProfession={index === selectedProfession}
           handleProfessionClick={handleProfessionClick}
+          selectedSkills={selectedSkills}
         />,
       )}
       {allSkills.map((skill, index) =>
@@ -46,6 +39,7 @@ export const ProfessionComponent = () => {
           index={index}
           total={allSkills.length}
           selectedSkills={selectedSkills}
+          handleSkillClick={handleSkillClick}
         />)}
     </div>
   );
