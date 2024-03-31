@@ -21,3 +21,15 @@
     border-radius: 50%;
     background: rgba(0, 163, 114, 1);
 }
+
+.selectedProfession {
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    border: 2px solid rgba(0, 163, 114, 1);
+}
+
+.node {
+    display: none;
+}
