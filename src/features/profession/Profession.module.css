@@ -1,4 +1,5 @@
 .professionContainer {
+    position: relative;
     width: 533px;
     height: 533px;
 }
@@ -16,8 +17,6 @@
 
 .professionCircle {
     position: absolute;
-    top: 12%;
-    left: 32%;
     width: 533px;
     height: 533px;
     border-radius: 50%;

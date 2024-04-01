@@ -27,7 +27,7 @@ export const ProfessionItem: FC<IProfessionItem> = memo(({
     top,
     leftItem,
     topItem,
-  } = calculatePosition({ index, total, radius: 170, radiusItem: -40 });
+  } = calculatePosition({ index, total, radius: 160, radiusItem: -30 });
 
   const isSelectedBySkills = selectedSkills.some(skill =>
     profession.mainSkills.includes(skill) || profession.otherSkills.includes(skill),
